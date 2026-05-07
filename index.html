@@ -72,7 +72,8 @@
     margin: 1.4rem 0 2.2rem; color: rgba(255,255,255,.88);
     font-size: 1.1rem; max-width: 560px; line-height: 1.6;
   }
-  .hero-btns { display: flex; flex-wrap: wrap; gap: .85rem; }
+  .hero-btns { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+  @media (min-width: 500px) { .hero-btns { flex-direction: row; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; } }
   .btn-primary {
     display: inline-flex; align-items: center; gap: .5rem;
     background: var(--orange); color: var(--white);
@@ -97,8 +98,7 @@
   }
   .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
   .hero-stats {
-    position: absolute; bottom: 2.5rem; left: 5%; right: 5%;
-    display: flex; flex-wrap: wrap; gap: 1rem;
+    display: flex; flex-wrap: wrap; gap: .75rem;
   }
   .stat-pill {
     background: rgba(255,255,255,.12); backdrop-filter: blur(8px);
@@ -310,7 +310,7 @@
     .gallery-grid { grid-template-columns: 1fr; }
     .gallery-item:first-child { grid-column: span 1; }
     .form-row { grid-template-columns: 1fr; }
-    .hero-stats { display: none; }
+    .hero-stats { gap: .5rem; }
     .why-grid { grid-template-columns: 1fr 1fr; }
   }
 
