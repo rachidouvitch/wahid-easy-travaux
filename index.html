@@ -405,6 +405,33 @@
   @media (max-width: 900px) { #galGrid { grid-template-columns: repeat(3,1fr); } .gal-item.wide { grid-column: span 2; } }
   @media (max-width: 600px) { #galGrid { grid-template-columns: repeat(2,1fr); } .gal-item.tall,.gal-item.wide { grid-column:span 1; grid-row:span 1; } .gal-item.normal,.gal-item.tall,.gal-item.wide { aspect-ratio:1/1; } }
 
+
+  #galGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .85rem;
+  }
+  .gal-item {
+    position: relative; overflow: hidden; border-radius: 12px;
+    aspect-ratio: 4/3; background: #dde4ed; cursor: pointer;
+  }
+  .gal-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+  .gal-item:hover img { transform: scale(1.06); }
+  .gal-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,61,107,.85) 0%, transparent 50%);
+    display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end;
+    padding: 1rem 1.1rem; opacity: 0; transition: opacity .3s;
+  }
+  .gal-item:hover .gal-overlay { opacity: 1; }
+  .gal-overlay .gol { color: #fff; font-weight: 700; font-size: .88rem; }
+  .gal-overlay .gcat {
+    background: var(--orange); color: #fff; font-size: .7rem; font-weight: 700;
+    padding: .2rem .6rem; border-radius: 3px; margin-bottom: .35rem; letter-spacing: .06em;
+  }
+  @media (max-width: 900px) { #galGrid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 500px)  { #galGrid { grid-template-columns: repeat(1,1fr); } }
+
 </style>
 </head>
 <body>
@@ -462,7 +489,7 @@
 <section class="about" id="about">
   <div class="about-inner">
     <div class="about-img reveal">
-      <img src="photos/img1.jpg" alt="Chantier de construction">
+      <img src="photos/p01_terrassement.jpg" alt="Chantier de construction">
       <div class="about-badge">
         <span class="num">+10</span>
         <span class="lbl">Ans d'expérience</span>
@@ -784,28 +811,28 @@
 
 <script>
 const IMGS = [
-  { src: "photos/img1.jpg", label: "Terrassement — Casablanca", cat: "Terrassement" },
-  { src: "photos/img2.jpg", label: "Travaux de voirie — Enrobé bitumineux", cat: "Voirie" },
-  { src: "photos/img3.jpg", label: "Gros oeuvre — Coulage béton", cat: "Gros oeuvre" },
-  { src: "photos/img4.jpg", label: "Assainissement — Coulage fondations", cat: "Assainissement" },
-  { src: "photos/img5.jpg", label: "Tranchée — Réseaux souterrains", cat: "Réseaux" },
-  { src: "photos/img6.jpg", label: "Pose de canalisations béton", cat: "Assainissement" },
-  { src: "photos/img7.jpg", label: "Voirie — Livraison chantier", cat: "Voirie" },
-  { src: "photos/img8.jpg", label: "Travaux d'enrobage — Casablanca", cat: "Voirie" },
-  { src: "photos/img9.jpg", label: "Ferraillage fondations", cat: "Gros oeuvre" },
-  { src: "photos/img10.jpg", label: "Pose canalisation — Réseaux AEP", cat: "Eau potable" },
-  { src: "photos/img11.jpg", label: "Réseau assainissement — Regards", cat: "Assainissement" },
-  { src: "photos/img12.jpg", label: "Terrassement — Fouilles", cat: "Terrassement" },
-  { src: "photos/img13.jpg", label: "Préparation voirie — Bordures", cat: "Voirie" },
-  { src: "photos/img14.jpg", label: "Excavation — Réseaux assainissement", cat: "Assainissement" },
-  { src: "photos/img15.jpg", label: "Collecteur double — Assainissement", cat: "Assainissement" },
-  { src: "photos/img16.jpg", label: "Canalisation béton armé", cat: "Réseaux" },
-  { src: "photos/img17.jpg", label: "Marquage au sol — Voirie", cat: "Voirie" },
-  { src: "photos/img18.jpg", label: "Dallage trottoir — Aménagement urbain", cat: "Voirie" },
-  { src: "photos/img19.jpg", label: "Revêtement granite — Espace public", cat: "Voirie" },
+  { src: "photos/p01_terrassement.jpg", label: "Terrassement — Casablanca", cat: "Terrassement" },
+  { src: "photos/p02_terrassement.jpg", label: "Terrassement — Fouilles", cat: "Terrassement" },
+  { src: "photos/p03_voirie.jpg", label: "Voirie — Enrobé bitumineux", cat: "Voirie" },
+  { src: "photos/p04_voirie.jpg", label: "Voirie — Livraison chantier", cat: "Voirie" },
+  { src: "photos/p05_voirie.jpg", label: "Travaux d'enrobage — Casablanca", cat: "Voirie" },
+  { src: "photos/p06_voirie.jpg", label: "Préparation voirie — Bordures", cat: "Voirie" },
+  { src: "photos/p07_voirie.jpg", label: "Marquage au sol — Voirie", cat: "Voirie" },
+  { src: "photos/p08_voirie.jpg", label: "Dallage trottoir — Aménagement urbain", cat: "Voirie" },
+  { src: "photos/p09_voirie.jpg", label: "Revêtement granite — Espace public", cat: "Voirie" },
+  { src: "photos/p10_assainissement.jpg", label: "Assainissement — Coulage fondations", cat: "Assainissement" },
+  { src: "photos/p11_assainissement.jpg", label: "Pose de canalisations béton", cat: "Assainissement" },
+  { src: "photos/p12_assainissement.jpg", label: "Excavation — Réseaux assainissement", cat: "Assainissement" },
+  { src: "photos/p13_assainissement.jpg", label: "Collecteur double — Assainissement", cat: "Assainissement" },
+  { src: "photos/p14_gros_oeuvre.jpg", label: "Gros oeuvre — Coulage béton", cat: "Gros oeuvre" },
+  { src: "photos/p15_gros_oeuvre.jpg", label: "Ferraillage fondations", cat: "Gros oeuvre" },
+  { src: "photos/p16_reseaux.jpg", label: "Tranchée — Réseaux souterrains", cat: "Réseaux" },
+  { src: "photos/p17_reseaux.jpg", label: "Réseau assainissement — Regards", cat: "Réseaux" },
+  { src: "photos/p18_eau_potable.jpg", label: "Pose canalisation — Réseaux AEP", cat: "Eau potable" },
+  { src: "photos/p19_eau_potable.jpg", label: "Canalisation béton armé", cat: "Eau potable" },
 ];
 
-const LAYOUT = ['wide','normal','normal','tall','normal','normal','normal','wide','normal','normal','tall','normal','normal','normal','wide','normal','normal','normal','normal'];
+const LAYOUT = [];
 let lbIdx = 0, visImgs = [];
 
 function buildGallery(filter) {
@@ -813,9 +840,9 @@ function buildGallery(filter) {
   grid.innerHTML = '';
   visImgs = filter === 'all' ? [...IMGS] : IMGS.filter(x => x.cat === filter);
   visImgs.forEach((img, i) => {
-    const cls = LAYOUT[i] || 'normal';
+    const cls = 'normal';
     const d = document.createElement('div');
-    d.className = 'gal-item ' + cls;
+    d.className = 'gal-item';
     d.onclick = () => openLb(i);
     d.innerHTML = '<img src="' + img.src + '" alt="' + img.label + '" loading="lazy"><div class="gal-overlay"><span class="gcat">' + img.cat + '</span><span class="gol">' + img.label + '</span></div>';
     grid.appendChild(d);
