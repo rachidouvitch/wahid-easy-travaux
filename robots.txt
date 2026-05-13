@@ -1,0 +1,12 @@
+# robots.txt — WAHID EASY TRAVAUX
+# https://wahideasytravaux.ma/
+
+User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+
+# Sitemap
+Sitemap: https://wahideasytravaux.ma/sitemap.xml
+
+# Crawl delay (optionnel, bon pour certains crawlers)
+Crawl-delay: 10
